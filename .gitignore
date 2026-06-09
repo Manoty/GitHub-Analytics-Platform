@@ -1,0 +1,44 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.venv/
+venv/
+*.egg-info/
+dist/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+htmlcov/
+.coverage
+
+# Node
+node_modules/
+dist/
+.next/
+*.local
+
+# Env
+.env
+.env.*
+!.env.example
+
+# Docker
+*.log
+
+# DB
+*.sqlite3
+*.db
+
+# dbt
+analytics/dbt/target/
+analytics/dbt/dbt_packages/
+analytics/dbt/logs/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
