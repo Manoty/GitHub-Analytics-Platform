@@ -1,0 +1,16 @@
+# analytics/dbt/models/intermediate/schema.yml
+
+version: 2
+
+models:
+  - name: int_commit_metrics
+    description: "Daily commit aggregations with 30d rolling window"
+
+  - name: int_pr_metrics
+    description: "Weekly PR throughput and merge time metrics"
+
+  - name: int_issue_metrics
+    description: "Weekly issue throughput and resolution time metrics"
+
+  - name: int_contributor_metrics
+    description: "Per-contributor commit, PR and issue rollups"

@@ -1,0 +1,37 @@
+# analytics/dbt/models/marts/schema.yml
+
+version: 2
+
+models:
+  - name: dim_repositories
+    description: "Repository dimension — one row per connected repo"
+    columns:
+      - name: repository_id
+        tests: [unique, not_null]
+
+  - name: dim_contributors
+    description: "Contributor dimension — one row per contributor per repo"
+    columns:
+      - name: contributor_key
+        tests: [unique, not_null]
+
+  - name: fact_commit_daily
+    description: "Daily commit fact table with rolling 30d window"
+    columns:
+      - name: fact_key
+        tests: [unique, not_null]
+
+  - name: fact_pr_summary
+    description: "Weekly PR throughput fact table"
+    columns:
+      - name: fact_key
+        tests: [unique, not_null]
+
+  - name: fact_issue_summary
+    description: "Weekly issue throughput fact table"
+    columns:
+      - name: fact_key
+        tests: [unique, not_null]
+
+  - name: mart_repository_health
+    description: "Health score mart joined with repo metadata"
