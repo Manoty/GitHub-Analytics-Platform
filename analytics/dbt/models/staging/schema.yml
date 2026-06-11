@@ -1,0 +1,48 @@
+# analytics/dbt/models/staging/schema.yml
+
+version: 2
+
+sources:
+  - name: public
+    database: github_analytics
+    schema: public
+    tables:
+      - name: repositories
+      - name: commits
+      - name: pull_requests
+      - name: issues
+      - name: contributors
+      - name: repository_health
+
+models:
+  - name: stg_repositories
+    description: "Cleaned repository records — connected repos only"
+    columns:
+      - name: repository_id
+        tests: [unique, not_null]
+
+  - name: stg_commits
+    description: "Cleaned commit records with derived date parts"
+    columns:
+      - name: commit_id
+        tests: [unique, not_null]
+      - name: committed_at
+        tests: [not_null]
+
+  - name: stg_pull_requests
+    description: "Cleaned pull request records"
+    columns:
+      - name: pr_id
+        tests: [unique, not_null]
+
+  - name: stg_issues
+    description: "Cleaned issue records"
+    columns:
+      - name: issue_id
+        tests: [unique, not_null]
+
+  - name: stg_contributors
+    description: "Cleaned contributor records"
+    columns:
+      - name: contributor_id
+        tests: [unique, not_null]
