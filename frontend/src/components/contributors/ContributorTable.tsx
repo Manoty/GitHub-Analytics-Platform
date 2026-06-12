@@ -27,7 +27,7 @@ export function ContributorTable({ contributors }: { contributors: ContributorSt
                   {c.avatar_url && (
                     <img src={c.avatar_url} alt={c.github_login} className="h-7 w-7 rounded-full" />
                   )}
-                  
+                  <a
                     href={`https://github.com/${c.github_login}`}
                     target="_blank"
                     rel="noreferrer"

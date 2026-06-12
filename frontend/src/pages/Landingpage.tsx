@@ -16,8 +16,30 @@ export default function LandingPage() {
   }, [isAuthenticated]);
 
   const handleLogin = async () => {
-    const { data } = await authApi.getLoginUrl();
-    window.location.href = data.url;
+    console.log("1. Clicked");
+    
+    try {
+      console.log("Before fetch");
+
+      const response = await fetch("/api/v1/auth/login");
+
+      console.log("After fetch");
+
+      console.log("2. Status:", response.status);
+
+      const data = await response.json();
+
+      console.log("3. Response:", data);
+
+      if (data.url) {
+        console.log("4. Redirecting to:", data.url);
+        window.location.href = data.url;
+      } else {
+        console.log("No URL returned");
+      }
+    } catch (err) {
+      console.error("Login error:", err);
+    }
   };
 
   return (
@@ -30,9 +52,13 @@ export default function LandingPage() {
           </div>
           <span className="font-semibold tracking-tight">GitAnalytics</span>
         </div>
-        <Button onClick={handleLogin} size="sm">
-          Sign in with GitHub
-        </Button>
+        <button
+          onClick={() => {
+            console.log("CLICKED");
+          }}
+        >
+          Login
+        </button>
       </nav>
 
       {/* Hero */}
